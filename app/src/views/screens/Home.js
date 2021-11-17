@@ -5,14 +5,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import COLORS from '../../consts/color';
-import { TextInput } from 'react-native-gesture-handler';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
 import STYLES from '../../styles';
 import { SafeAreaView } from 'react-native';
 
 const Home = () => {
     return (
-        <SafeAreaView
+        <ScrollView
             style={{ paddingHorizontal: "0.0%", paddingVertical: "1%", flex: 1, backgroundColor: COLORS.white }}>
 
             <View style={{ flex: 1, backgroundColor: '' }}>
@@ -34,7 +34,7 @@ const Home = () => {
                 </View>
 
             </View>
-        </SafeAreaView>
+        </ScrollView>
 
         // <View style={{ flex: 1, backgroundColor: "#fff" }}>
         //     {/* <View>

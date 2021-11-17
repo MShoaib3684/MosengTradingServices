@@ -7,9 +7,9 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 const SignInScreen = ({ navigation }) => {
     return (
-        <SafeAreaView
+        <ScrollView
             style={{ paddingHorizontal: "5%", paddingVertical: "1%", flex: 1, backgroundColor: COLORS.white }}>
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <View showsVerticalScrollIndicator={false}>
                 <View style={{ flexDirection: 'row', marginTop: "10%", alignContent: 'center', justifyContent: 'center' }}>
                 </View>
                 <View style={{ flexDirection: 'column', alignContent: 'center', justifyContent: 'center' }}>
@@ -96,8 +96,8 @@ const SignInScreen = ({ navigation }) => {
                 </View>
 
 
-            </ScrollView >
-        </SafeAreaView >
+            </View >
+        </ScrollView >
     );
 };
 
