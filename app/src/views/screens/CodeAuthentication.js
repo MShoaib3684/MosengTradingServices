@@ -86,7 +86,7 @@ const CodeAuthentication: React.FC<any> = ({ navigation }) => {
                 </View>
             </View>
             <View style={STYLES.container}>
-                <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+                <TouchableOpacity onPress={() => navigation.navigate('UploadDocument')}>
                     <View style={STYLES.btnVerify}>
                         <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 18 }}>
                             Varify Now

@@ -6,19 +6,19 @@ import STYLES from '../../styles';
 
 const fullScreenWidth = Dimensions.get('window').width;
 
+const logo = '../../assets/splash1.png';
 const WelcomeScreen = ({ navigation }) => {
     return (
-        <SafeAreaView
-            style={{ width: Dimensions.get('screen').width, height: Dimensions.get('screen').height }}>
-            <View style={{ paddingHorizontal: "5%", paddingVertical: "1%", flex: 1, backgroundColor: COLORS.white }}>
-                <ScrollView showsVerticalScrollIndicator={false}>
-                    <View>
+        <>
+            <SafeAreaView
+                style={{ paddingHorizontal: "2%", width: Dimensions.get('screen').width, height: Dimensions.get('screen').height }}>
+                <View style={{ flex: 1, backgroundColor: '' }}>
+                    <View style={{ flex: 2, backgroundColor: '#fff', alignItems: 'center', justifyContent: 'center' }}>
                         <Image
-                            style={{ alignSelf: 'center', justifyContent: 'center', top: "80%" }}
-                            source={require('../../assets/splash1.png')} />
+                            source={require(logo)} />
                     </View>
 
-                    <View >
+                    <View style={{ flex: 1, backgroundColor: '#fff', justifyContent: 'space-around' }}>
                         <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
                             <View style={{ paddingVertical: "10%" }}>
                                 <View style={STYLES.btnPrimary}>
@@ -28,11 +28,13 @@ const WelcomeScreen = ({ navigation }) => {
                                 </View>
                             </View>
                         </TouchableOpacity>
-                    </View>
-                </ScrollView>
-            </View>
-        </SafeAreaView>
 
+
+                    </View>
+
+                </View>
+            </SafeAreaView>
+        </>
     );
 };
 
@@ -43,3 +45,6 @@ const styles = StyleSheet.create({
 })
 
 export default WelcomeScreen;
+
+
+

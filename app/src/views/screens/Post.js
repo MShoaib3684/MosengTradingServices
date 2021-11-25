@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, ImageBackground } from 'react-native'
+import { View, Text, ImageBackground, Dimensions } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -12,14 +12,15 @@ import { SafeAreaView } from 'react-native';
 import { Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { TouchableOpacity } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native';
+import MapView, { PROVIDER_GOOGLE, Callout, Circle, Marker } from "react-native-maps";
 
 const Post = ({ navigation }) => {
     return (
         <SafeAreaView
-            style={{ paddingHorizontal: "0.0%", paddingVertical: "1%", flex: 1, backgroundColor: COLORS.white }}>
-
-            <ScrollView style={{ flex: 1, backgroundColor: '' }}>
-                <View style={{ flex: 0.5, backgroundColor: '', flexDirection: 'row' }}>
+            style={{ paddingHorizontal: "1%", flex: 1, backgroundColor: COLORS.white }}>
+            <View style={{ flex: 1, backgroundColor: '' }}>
+                <View style={{ flex: 0.7, backgroundColor: COLORS.white, alignItems: 'center', flexDirection: 'row', }}>
                     <Icon
                         name="widgets"
                         color={COLORS.code}
@@ -29,45 +30,70 @@ const Post = ({ navigation }) => {
                     <Text style={styles.text}> Post Order</Text>
                 </View>
 
-                <View style={{ paddingHorizontal: "5%", paddingVertical: "2%", flex: 6, backgroundColor: '' }}>
-                    <View style={styles.inputContainer}>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Text style={styles.text1}>Title:</Text>
-                        </View>
-                        <TextInput style={styles.input} />
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Text style={styles.text1}>Price:</Text>
-                        </View>
-                        <TextInput style={styles.input} />
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
-                            <Text style={styles.text1}>Time:</Text>
-                        </View>
-                        <TextInput style={styles.input} />
-                    </View>
-                    <View style={styles.inputContainer}>
-                        <View style={{ flex: 1, }}>
-                            <Text style={styles.text1}>Description:</Text>
-                        </View>
-                        <TextInput style={styles.input} />
-                    </View>
-                    <View style={{ marginTop: "2%", marginBottom: "1%" }}>
-                        <Text style={styles.text1}>Pickup Location:</Text>
-                        <Image
-                            style={{ width: "100%" }}
-                            source={require('../../assets/pickup.png')} />
-                    </View>
-                    <View style={{ marginTop: "1%", marginBottom: "1%" }}>
-                        <Text style={styles.text1}>Drop-0ff Location:</Text>
-                        <Image
-                            style={{ width: "100%" }}
-                            source={require('../../assets/dropoff.png')} />
-                    </View>
-                    <TouchableOpacity onPress={() => navigation.navigate('TabBottom')}>
 
+                <KeyboardAvoidingView style={{ paddingHorizontal: "3%", flex: 3, backgroundColor: '', alignItems: 'center', justifyContent: 'center' }}>
+
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.text1}>Title:</Text>
+                        <TextInput
+                            style={styles.input} />
+                    </View>
+
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.text1}>Price:</Text>
+                        <TextInput
+                            style={styles.input} />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.text1}>Time:</Text>
+                        <TextInput
+                            style={styles.input} />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <Text style={styles.text1}>Description:</Text>
+                        <TextInput
+                            style={styles.input} />
+                    </View>
+
+                </KeyboardAvoidingView>
+
+                <View style={{ flex: 0.5, backgroundColor: 'white' }}>
+                    <Text style={styles.text1}>Pickup Location:</Text>
+
+                </View>
+                <View style={{ flex: 1, backgroundColor: 'gray' }}>
+                    <MapView
+                        style={styles.map}
+                        initialRegion={{
+                            latitude: 37.78825,
+                            longitude: -122.4324,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421
+                        }}
+                        provider="google"
+                    >
+                    </MapView>
+                </View>
+                <View style={{ paddingHorizontal: "3%", flex: 0.5, backgroundColor: 'white', }}>
+                    <Text style={styles.text1}>Drop-off Location:</Text>
+
+                </View>
+
+                <View style={{ flex: 1, backgroundColor: 'gray' }}>
+                    <MapView
+                        style={styles.map}
+                        initialRegion={{
+                            latitude: 37.78825,
+                            longitude: -122.4324,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421
+                        }}
+                        provider="google"
+                    >
+                    </MapView>
+                </View>
+                <View style={{ paddingHorizontal: "3%", flex: 0.7, backgroundColor: '', marginTop: "8%", marginBottom: "5%" }}>
+                    <TouchableOpacity onPress={() => alert('Successful')}>
                         <View style={styles.btnPrimary}>
                             <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 20 }}>
                                 Post
@@ -75,8 +101,7 @@ const Post = ({ navigation }) => {
                         </View>
                     </TouchableOpacity>
                 </View>
-
-            </ScrollView>
+            </View>
         </SafeAreaView>
 
     )
@@ -85,6 +110,10 @@ export default Post;
 
 const styles = StyleSheet.create({
 
+    map: {
+        width: Dimensions.get("window").width,
+        height: "100%",
+    },
     textBox: {
         paddingLeft: 20,
         color: COLORS.dark,
@@ -113,13 +142,11 @@ const styles = StyleSheet.create({
 
     },
     input: {
-        color: COLORS.light,
+        color: COLORS.dark,
         borderBottomWidth: 0.5,
         flex: 1,
-        flexDirection: 'row',
         fontSize: 20,
         fontWeight: '900',
-        paddingHorizontal: "35%",
     },
 
     inputContainer:
@@ -128,9 +155,9 @@ const styles = StyleSheet.create({
 
     },
     btnPrimary: {
-        marginTop: "3%",
+
         backgroundColor: COLORS.code,
-        height: 50,
+        height: 60,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
@@ -138,3 +165,29 @@ const styles = StyleSheet.create({
 
 
 })
+
+
+
+
+
+// <View style={{ marginTop: "2%", marginBottom: "1%" }}>
+//     <Text style={styles.text1}>Pickup Location:</Text>
+//     <Image
+//         style={{ width: "100%" }}
+//         source={require('../../assets/pickup.png')} />
+// </View>
+// <View style={{ marginTop: "1%", marginBottom: "1%" }}>
+//     <Text style={styles.text1}>Drop-0ff Location:</Text>
+//     <Image
+//         style={{ width: "100%" }}
+//         source={require('../../assets/dropoff.png')} />
+// </View>
+// <TouchableOpacity onPress={() => navigation.navigate('TabBottom')}>
+
+//     <View style={styles.btnPrimary}>
+//         <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 20 }}>
+//             Post
+//         </Text>
+//     </View>
+// </TouchableOpacity>
+// </View>

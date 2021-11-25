@@ -4,8 +4,13 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/color';
 import STYLES from '../../styles';
 import { ScrollView } from 'react-native-gesture-handler';
+import { RadioButton } from 'react-native-paper';
+
+
 
 const SignUpScreen = ({ navigation }) => {
+
+    const [checked, setChecked] = React.useState('first');
     return (
         <SafeAreaView
             style={{ paddingHorizontal: 20, flex: 1, backgroundColor: COLORS.white }}>
@@ -16,7 +21,6 @@ const SignUpScreen = ({ navigation }) => {
                     <Text style={{ fontWeight: 'bold', fontSize: 28, color: COLORS.dark, alignSelf: 'center' }}>
                         Welcome to
                     </Text>
-
                     <Text style={{ fontWeight: 'bold', fontSize: 28, color: COLORS.dark, alignSelf: 'center' }}>
                         Moseng Trading Services
                     </Text>
@@ -26,79 +30,60 @@ const SignUpScreen = ({ navigation }) => {
                 </View>
                 <View style={{ marginTop: 20 }}>
                     <View style={STYLES.inputContainer}>
-                        {/* <Icon
-                            name="account-circle"
-                            color={COLORS.light}
-                            size={20}
-                            style={STYLES.inputIcon}
-                        /> */}
+
                         <TextInput placeholder="Full Name" style={STYLES.input} />
                     </View>
                     <View style={STYLES.inputContainer}>
-                        {/* <Icon
-                            name="lock-outline"
-                            color={COLORS.light}
-                            size={20}
-                            style={STYLES.inputIcon}
-                        /> */}
+
                         <TextInput
                             placeholder="Password"
                             style={STYLES.input}
                             secureTextEntry
                         />
-                        {/* <Icon
-                            name="visibility-off"
-                            color={COLORS.light}
-                            size={20}
-                            style={STYLES.inputIconl}
 
-                        /> */}
                     </View>
                     <View style={STYLES.inputContainer}>
-                        {/* <Icon
-                            name="person-outline"
-                            color={COLORS.light}
-                            size={20}
-                            style={STYLES.inputIcon}
-                        /> */}
+
                         <TextInput placeholder="Email" style={STYLES.input} />
                     </View>
                     <View style={STYLES.inputContainer}>
-                        {/* <Icon
-                            name="lock-outline"
-                            color={COLORS.light}
-                            size={20}
-                            style={STYLES.inputIcon}
-                        /> */}
+
                         <TextInput
                             placeholder="Password"
                             style={STYLES.input}
                             secureTextEntry
                         />
-                        {/* <Icon
-                            name="visibility-off"
-                            color={COLORS.light}
-                            size={20}
-                            style={STYLES.inputIconl}
-
-                        /> */}
-
                     </View>
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            alignItems: 'flex-end',
-                            justifyContent: 'flex-end',
-                            marginTop: 10,
-                        }}>
-                        <TouchableOpacity onPress={() => navigation.navigate('ForgetPassword')}>
-                            <Text
-                                style={{ color: COLORS.code, fontSize: 18, fontWeight: '500' }}> Forgot Password?
-                            </Text>
-                        </TouchableOpacity>
+                    <View style={STYLES.inputContainer}>
+
+                        <TextInput placeholder="+1 ^" style={STYLES.input} />
                     </View>
+                    <View>
+                        <Text style={{ fontWeight: 'bold', fontSize: 18, color: COLORS.light, }}>I am a: </Text>
+                    </View>
+                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                        <View>
+                            <Text style={{ fontWeight: 'bold', fontSize: 18, color: COLORS.light, }}>Driver </Text>
+                        </View>
+                        <RadioButton
+                            value="first"
+                            color={COLORS.code}
+                            status={checked === 'first' ? 'checked' : 'unchecked'}
+                            onPress={() => setChecked('first')}
+                        />
+                        <View>
+                            <Text style={{ fontWeight: 'bold', fontSize: 18, color: COLORS.light, }}>Customer </Text>
+                        </View>
+                        <RadioButton
+                            value="second"
+                            color={COLORS.code}
+                            status={checked === 'second' ? 'checked' : 'unchecked'}
+                            onPress={() => setChecked('second')}
+                        />
+                    </View>
+
                     <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-                        <View style={{ flex: 1, marginTop: 10 }}>
+                        <View style={{}}>
                             <View style={STYLES.btnSecondary}>
 
                                 <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 18 }}>
@@ -118,7 +103,10 @@ const SignUpScreen = ({ navigation }) => {
                         </Text>
                         <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
                             <Text
-                                style={{ color: COLORS.code, fontWeight: '500', fontSize: 18 }}> Signin
+                                style={{
+                                    color: COLORS.code,
+                                    fontWeight: '500', fontSize: 18
+                                }}> Signin
                             </Text>
                         </TouchableOpacity>
 
@@ -127,7 +115,7 @@ const SignUpScreen = ({ navigation }) => {
 
 
             </ScrollView>
-        </SafeAreaView >
+        </SafeAreaView>
     );
 };
 

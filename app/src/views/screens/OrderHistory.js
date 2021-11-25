@@ -10,40 +10,88 @@ import { TextInput } from 'react-native-gesture-handler';
 
 const DATA = [
     {
-        id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-        title: "Orders# 112343               Price:200$",
-
+        id: "1",
+        title: "Orders # 112343",
+        price: "Price :  200 $",
+        title1: "10 : 00 Pm",
+        title2: "East 46th Etreet, New York ",
+        title3: "Pizza, Itallian",
 
     },
 
     {
-        id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-        title: "You have got a pickup request",
-        title1: "username here east 46th street,New Yourk Pizza, Itallian"
+        id: "2",
+        title: "Orders # 112343",
+        price: "Price : 200 $",
+        title1: "10 : 00 Pm",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
     },
     {
-        id: "58694a0f-3da1-471f-bd96-145571e29d72",
-        title: "You have got a pickup request",
-        title1: "username here east 46th street,New Yourk Pizza, Itallian"
+        id: "3",
+        title: "Orders # 112343",
+        price: "Price : 200 $",
+        title1: "10 : 00 Pm",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
     },
     {
-        id: "58694a0f-3da1-471f-bd96-145571e29d73",
-        title: "You have got a pickup request",
-        title1: "username here east 46th street,New Yourk Pizza, Itallian"
+        id: "4",
+        title: "Orders # 112343",
+        price: "Price : 200 $",
+        title1: "10 : 00 Pm",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
+    },
+    {
+        id: "5",
+        title: "Orders # 112343",
+        price: "Price : 200 $",
+        title1: "10 : 00 Pm",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
+    },
+    {
+        id: "6",
+        title: "Orders # 112343",
+        price: "Price : 200 $",
+        title1: "10 : 00 Pm",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
+    },
+    {
+        id: "7",
+        title: "Orders # 112343",
+        price: "Price : 200 $",
+        title1: "10 : 00 Pm",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
     },
 ];
 
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
-    <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-        <Text style={[styles.title, textColor]}>{item.title},{item.title1}</Text>
-    </TouchableOpacity>
+    <View style={{ flex: 1, backgroundColor: '#ECECEC' }}>
+        <View style={[styles.item, backgroundColor]}>
+            {/* <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}> */}
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.price}>{item.price}</Text>
+            <Text style={styles.title1} >{item.title1}</Text>
+            <Text style={styles.title1}>{item.title2}</Text>
+            <Text style={styles.title1}>{item.title3}</Text>
+
+        </View>
+    </View>
+    // <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+    //     <Text style={[styles.title, textColor]}>{item.title},{item.title1}</Text>
+
+    // </TouchableOpacity>
 );
 
 const OrderHistory = () => {
     const [selectedId, setSelectedId] = useState(null);
 
     const renderItem = ({ item }) => {
-        const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#fff";
+        const backgroundColor = item.id === selectedId ? "#fff" : "#fff";
         const color = item.id === selectedId ? 'white' : 'black';
 
         return (
@@ -91,16 +139,28 @@ const styles = StyleSheet.create({
         marginTop: StatusBar.currentHeight || 0,
     },
     item: {
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
+        padding: 15,
+        marginVertical: 5,
+        marginHorizontal: 10,
     },
     title: {
-        fontSize: 18,
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: 'black',
+    },
+    price: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: COLORS.light,
+        alignSelf: 'flex-end',
+        top: -10,
+        marginTop: -15,
     },
     title1: {
-        fontSize: 10,
+        fontSize: 14,
+        color: COLORS.light,
     },
+
     text: {
         color: 'black',
         fontSize: 30,

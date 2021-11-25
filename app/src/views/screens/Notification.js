@@ -1,75 +1,110 @@
 // import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { useState } from "react";
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import STYLES from '../../styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import COLORS from '../../consts/color';
-import { TextInput } from 'react-native-gesture-handler';
 
 const DATA = [
     {
-        id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-        title: "You have got a pickup request",
-        title1: "username here east 46th street,New Yourk Pizza, Itallian"
+        id: "1",
+        title: "You have got a pickup Request",
+        title1: "username here",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
+        button: "Approve"
     },
     {
-        id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-        title: "You have got a pickup request",
-        title1: "username here east 46th street,New Yourk Pizza, Itallian"
+        id: "2",
+        title: "You have got a pickup Request ",
+        title1: "username here",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
+        button: "Approve"
     },
     {
-        id: "58694a0f-3da1-471f-bd96-145571e29d72",
-        title: "You have got a pickup request",
-        title1: "username here east 46th street,New Yourk Pizza, Itallian"
+        id: "3",
+        title: "You have got a pickup Request",
+        title1: "username here",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
+        button: "Approve"
     },
     {
-        id: "58694a0f-3da1-471f-bd96-145571e29d73",
-        title: "You have got a pickup request",
-        title1: "username here east 46th street,New Yourk Pizza, Itallian"
+        id: "4",
+        title: "You have got a pickup Request",
+        title1: "username here",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
+        button: "Approve"
+    },
+    {
+        id: "5",
+        title: "You have got a pickup Request",
+        title1: "username here",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
+        button: "Approve"
+    },
+    {
+        id: "6",
+        title: "You have got a pickup Request",
+        title1: "username here",
+        title2: "East 46th Street, New York ",
+        title3: "Pizza, Itallian",
+        button: "Approve"
     },
 ];
 
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
-    <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
-        <Text style={[styles.title, textColor]}>{item.title},{item.title1}</Text>
-    </TouchableOpacity>
+    <View style={{ flex: 1, backgroundColor: '#ECECEC' }}>
+        <View style={[styles.item, backgroundColor]}>
+            {/* <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}> */}
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.title1} >{item.title1}</Text>
+            <Text style={styles.title1}>{item.title2}</Text>
+            <Text style={styles.title1}>{item.title3}</Text>
+            <TouchableOpacity onPress={onPress}>
+                <Text style={styles.btnPrimary}>{item.button}</Text>
+            </TouchableOpacity>
+        </View>
+
+    </View>
 );
 
-const Notification = () => {
+const Notification = ({ navigation }) => {
     const [selectedId, setSelectedId] = useState(null);
 
     const renderItem = ({ item }) => {
-        const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#fff";
+        const backgroundColor = item.id === selectedId ? "#fff" : "#fff";
         const color = item.id === selectedId ? 'white' : 'black';
-
         return (
-            <Item
-                item={item}
-                onPress={() => setSelectedId(item.id)}
-                backgroundColor={{ backgroundColor }}
-                textColor={{ color }}
-            />
+            <View style={{ flex: 1, backgroundColor: 'green' }}>
+                <Item
+                    item={item}
+                    onPress={() => {
+                        setSelectedId(item.id);
+                        navigation.navigate('Order')
+                    }}
+                    backgroundColor={{ backgroundColor }}
+                    textColor={{ color }}
+                />
+
+            </View>
         );
     };
 
     return (
 
-        <View style={{ flex: 1 }}>
-            <View style={{}}>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
+            <View style={{ flex: 0.1, backgroundColor: 'white', alignItems: 'center', flexDirection: 'row', }}>
                 <Icon
                     name="notifications"
                     color={COLORS.code}
                     size={35}
                     style={styles.inputIcon}
                 />
-                <View style={STYLES.inputContainer}>
-
-                    <Text style={styles.text}>Notification</Text>
-                </View>
+                <Text style={styles.text}> Notification</Text>
             </View>
-
             <SafeAreaView style={styles.container}>
 
                 <FlatList
@@ -89,28 +124,40 @@ const styles = StyleSheet.create({
         marginTop: StatusBar.currentHeight || 0,
     },
     item: {
-        padding: 20,
-        marginVertical: 8,
-        marginHorizontal: 16,
+        padding: 15,
+        marginVertical: 5,
+        marginHorizontal: 10,
     },
     title: {
-        fontSize: 25,
+        fontSize: 20,
+        fontWeight: 'bold'
     },
     title1: {
         fontSize: 14,
+        color: COLORS.light,
+    },
+    btnPrimary: {
+        backgroundColor: COLORS.code,
+        color: "#fff",
+        fontWeight: 'bold',
+        textAlign: 'center',
+        alignSelf: 'flex-end',
+        justifyContent: 'center',
+        borderRadius: 10,
+        height: 22,
+        width: 60,
     },
     text: {
+        marginTop: "1%",
         color: 'black',
         fontSize: 30,
         fontWeight: 'bold',
-        paddingLeft: "12%",
-        paddingHorizontal: "10%",
-
+        paddingLeft: "0%",
     },
     inputIcon: {
-        marginTop: "5.5%",
-        position: 'absolute',
-        marginLeft: 10,
+        marginTop: "2%",
+        position: 'relative',
+        marginLeft: "2%",
 
     },
 });

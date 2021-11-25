@@ -41,8 +41,7 @@ const STYLES = StyleSheet.create({
     },
     btnPrimary: {
         backgroundColor: COLORS.code,
-        height: 50,
-        marginTop: "100%",
+        height: 60,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
@@ -55,7 +54,7 @@ const STYLES = StyleSheet.create({
     btnSecondary: {
         backgroundColor: COLORS.code,
         height: 50,
-        marginTop: "50%",
+        marginTop: 150,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
@@ -79,7 +78,7 @@ const STYLES = StyleSheet.create({
     btnVerify: {
         backgroundColor: COLORS.code,
         height: 50,
-        marginTop: "120%",
+        marginTop: "90%",
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
@@ -89,9 +88,9 @@ const STYLES = StyleSheet.create({
     },
     verificationCodeInputViewBox: {
         backgroundColor: '#fff',
-        height: 55,
-        marginHorizontal: 55,
-        marginTop: 10,
+        height: 60,
+        marginHorizontal: 50,
+        marginTop: 20,
         flexDirection: 'row',
     },
     verificationCodeInputView: {
@@ -101,21 +100,21 @@ const STYLES = StyleSheet.create({
     verificationCodeInput: {
         flex: 1,
         backgroundColor: '#fff',
-        borderRadius: 2,
+        borderRadius: 20,
         color: '#000000',
         fontSize: 27,
-        borderBottomColor: '#F5F5F5',
+        borderBottomColor: '#828282',
         borderBottomWidth: 5,
         fontWeight: '700',
-        marginHorizontal: 7,
+        marginHorizontal: 10,
     },
     otpBoxesContainer: {
         flexDirection: 'row',
     },
     otpBox: {
-        padding: 10,
-        marginRight: 10,
-        borderWidth: 1,
+        padding: 40,
+        marginRight: 20,
+        borderWidth: 10,
         borderColor: '#F5F5F5',
         height: 45,
         width: 45,
